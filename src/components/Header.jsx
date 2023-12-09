@@ -1,3 +1,4 @@
+import Button from './Button/Button'
 import SnowFlakes from './SnowFlakes'
 
 function Header() {
@@ -12,6 +13,7 @@ function Header() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          margin:'0 16px',
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
@@ -35,10 +37,10 @@ function Header() {
               fill="white"
             />
           </svg>
-          <h2>Składniki</h2>
+          <h2 style={{paddingLeft:'8px'}}>Składniki</h2>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <button className="buttonHeader">Generuj</button>
+        <Button>Generuj</Button>
         </div>
       </nav>
     </>
