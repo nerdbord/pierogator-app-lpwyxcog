@@ -1,13 +1,15 @@
 import './App.css'
-import Header from './components/Header'
-import SectionContent from './components/SectionContent'
+import Header from './layouts/AppHeader/Header/Header'
+import SectionContent from './layouts/InputsSection/SectionContent'
 import { AppLayout } from './layouts/AppLayout/Applayout'
+import { ImageSection } from './layouts/ImageSection/ImageSection'
 
 function App() {
   return (
     <AppLayout>
-      <Header></Header>
+      <Header />
       <SectionContent />
+      <ImageSection />
     </AppLayout>
   )
 }

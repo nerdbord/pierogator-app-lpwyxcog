@@ -22,13 +22,13 @@ $h3: (
   letter-spacing: 0%,
 );
 
-$body: (
-  font-family: 'Poppins',
-  font-weight: regular,
-  font-size: 14px,
-  line-height: 20px,
-  letter-spacing: 0%,
-);
+// $body: (
+//   font-family: 'Poppins',
+//   font-weight: regular,
+//   font-size: 14px,
+//   line-height: 20px,
+//   letter-spacing: 0%,
+// );
 
 $button: (
   font-family: 'Poppins',
@@ -45,3 +45,5 @@ $button2: (
   line-height: 16px,
   letter-spacing: 0%,
 );
+
+$body: regular 400 14px 'Poppins';

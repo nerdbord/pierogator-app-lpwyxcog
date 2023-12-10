@@ -1,4 +1,4 @@
-import styles from '../components/Flakes.module.css'
+import styles from './Flakes.module.scss'
 function SnowFlake() {
   return (
     <>
