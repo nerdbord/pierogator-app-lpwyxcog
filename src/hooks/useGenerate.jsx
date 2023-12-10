@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const useChatGPT = () => {
-  const [generatedText, setGeneratedText] = useState('')
+const [generatedText, setGeneratedText] = useState('')
 
-  const generateDough = async () => {
+async function  generateDough (name) {
     try {
       const response = await axios.post(
         'https://training.nerdbord.io/api/v1/openai/chat/completions',
@@ -14,7 +14,7 @@ const useChatGPT = () => {
             {
               role: 'user',
               content:
-                'Zgeneruj 4 randomowe skladniki do ciasta.Wymień w postaci 1-...,2-...,3-... ',
+                `Zgeneruj 4 randomowe skladniki do ${name.name}. Pisz tylko listę składników`,
             },
           ],
         },
@@ -26,14 +26,16 @@ const useChatGPT = () => {
           },
         }
       )
-
-      setGeneratedText(response.data.choices[0].message.content)
+      console.log(name.name)
+    setGeneratedText(response.data.choices[0].message.content)
     } catch (error) {
       console.error('Error generating :', error)
     }
   }
+ 
 
-  return { generatedText, generateDough }
+  return { generatedText, generateDough };
 }
+
 
 export default useChatGPT

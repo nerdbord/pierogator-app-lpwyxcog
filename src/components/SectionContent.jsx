@@ -9,7 +9,15 @@ function SectionContent(){
         }}>
 <div style={{padding: "16px"}}>
 <h3>Ciasto</h3>
-<Input />
+<Input name="Ciasto" />
+</div>
+<div style={{padding: "16px"}}>
+<h3>Nadzienie</h3>
+<Input name="Nadzienie" />
+</div>
+<div style={{padding: "16px"}}>
+<h3>Składniki</h3>
+<Input name="Składniki" />
 </div>
 
 

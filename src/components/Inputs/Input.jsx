@@ -1,11 +1,33 @@
+import { useState, useEffect } from 'react'
 import useChatGPT from '../../hooks/useGenerate'
 import styles from './Input.module.scss'
 import buttonLock from '/Button.svg'
-function Input() {
-  const { generatedText, generateDough } = useChatGPT()
+
+function Input({name}) {
+  const [value, setValue] = useState('wpisz, wygeneruj lub zostaw puste')
+  const [isEditing, setIsEditing] = useState(false)
+  const { generatedText, generateDough } = useChatGPT();
+
+    useEffect(() => {
+        generateDough({name})
+        console.log(generatedText);
+    },[])
+ 
   const handleGenerateButtonClick = () => {
-    generateDough()
+    generateDough({name})
+  setValue(generatedText);
+  console.log(generatedText)
+    }
+ 
+  
+
+  const handleInputOnChange = (e) => {
+    setValue(e.target.value)
   }
+  const handleInputOnClick = (e) => {
+    setValue('')
+  }
+
   return (
     <>
       <div
@@ -27,7 +49,8 @@ function Input() {
         >
           <img src={buttonLock} />
         </button>
-        <input type="text" id="uname" name="name" value={generatedText} />
+
+        <input type="text" id="uname" name="name" value={value} onChange={handleInputOnChange} onClick={handleInputOnClick} />
       </div>
     </>
   )
