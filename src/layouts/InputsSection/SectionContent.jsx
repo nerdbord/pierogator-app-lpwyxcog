@@ -4,17 +4,17 @@ import styles from './SectionContent.module.scss'
 import { useSelector, useDispatch } from 'react-redux';
 function SectionContent() {
   let objInputs;
-  const bio = useSelector(state => state.inputs.items);
- if(bio.length > 0){
-  objInputs =  JSON.parse(bio)
+  const inputsDescription = useSelector(state => state.inputs.items);
+ if(inputsDescription.length > 0){
+  objInputs =  JSON.parse(inputsDescription);
  }
  
   return (
     <>
       <section className={styles.container}>
-        <InputField inputTitle="Ciasto" />
-        <InputField inputTitle="Nadzienie" />
-        <InputField inputTitle="Składniki" />
+      {(inputsDescription.length > 0) ? <InputField inputTitle="Ciasto" value={objInputs['Ciasto']} /> : <InputField inputTitle="Ciasto" value='wpisz, wygeneruj lub zostaw puste' />}
+      {(inputsDescription.length > 0) ? <InputField inputTitle="Nadzienie" value={objInputs['Nadzienie']} /> : <InputField inputTitle="Nadzienie" value='wpisz, wygeneruj lub zostaw puste' />}
+      {(inputsDescription.length > 0) ? <InputField inputTitle="Składniki" value={objInputs['Składniki']} /> : <InputField inputTitle="Składniki" value='wpisz, wygeneruj lub zostaw puste' />}
       </section>
     </>
   )

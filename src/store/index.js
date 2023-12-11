@@ -5,9 +5,10 @@ import generateDough from '../API/index-api';
 
 const inputsAnswers = {
     'Ciasto': '',
-    'Nadzienie': ''
+    'Nadzienie': '',
+    'Składniki': ''
 }
-const valueInputs = ['Ciasto','Nadzienie']
+const valueInputs = ['Ciasto','Nadzienie', 'Składniki']
 const inputSlice = createSlice({
     name: 'input',
     initialState: {
