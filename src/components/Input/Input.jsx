@@ -8,10 +8,10 @@ function Input({ name }) {
   const [isEditing, setIsEditing] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 
-  useEffect(() => {
-    generateDough({ name })
-    console.log(generatedText)
-  }, [])
+  // useEffect(() => {
+  //   generateDough({ name })
+  //   console.log(generatedText)
+  // }, [])
 
   const handleGenerateButtonClick = () => {
     generateDough({ name })

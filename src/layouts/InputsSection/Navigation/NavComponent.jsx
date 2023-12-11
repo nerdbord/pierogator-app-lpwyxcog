@@ -1,7 +1,15 @@
 import React from 'react'
 import PierogIcon from '@icons/Pierog.svg?react'
 import Button from '../../../components/Button/Button'
+import { useSelector, useDispatch } from 'react-redux';
+import { inputsActions } from '../../../store/index';
 export const NavComponent = ({ title }) => {
+  const dispatch = useDispatch();
+  const handleClick = () =>{
+    console.log('hej')
+  dispatch(inputsActions.getItems())
+   
+  }
   return (
     <nav
       style={{
@@ -16,7 +24,7 @@ export const NavComponent = ({ title }) => {
         <h2 style={{ paddingLeft: '8px' }}>{title}</h2>
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Button>Generuj</Button>
+        <Button ><span onClick={handleClick}>Generuj</span></Button>
       </div>
     </nav>
   )
