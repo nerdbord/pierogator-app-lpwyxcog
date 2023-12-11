@@ -6,7 +6,7 @@ import { inputsActions } from '../../../store/index';
 export const NavComponent = ({ title }) => {
   const dispatch = useDispatch();
   const handleClick = () =>{
-    console.log('hej')
+
   dispatch(inputsActions.getItems())
    
   }
