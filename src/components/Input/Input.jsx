@@ -3,21 +3,18 @@ import useChatGPT from '../../hooks/useGenerate'
 import styles from './Input.module.scss'
 import ButtonLock from '../ButtonLock/ButtonLock'
 
-function Input({ name }) {
+function Input({ name, valueInput }) {
   const [value, setValue] = useState('wpisz, wygeneruj lub zostaw puste')
   const [isEditing, setIsEditing] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 
-  useEffect(() => {
-    generateDough({ name })
-    console.log(generatedText)
-  }, [])
-
-  const handleGenerateButtonClick = () => {
-    generateDough({ name })
-    setValue(generatedText)
-    console.log(generatedText)
-  }
+  // useEffect(() => {
+  //   generateDough({ name })
+  //   console.log(generatedText)
+  // }, [])
+useEffect(()=> {
+  setValue(valueInput)
+}, [valueInput] )
 
   const handleInputOnChange = (e) => {
     setValue(e.target.value)
