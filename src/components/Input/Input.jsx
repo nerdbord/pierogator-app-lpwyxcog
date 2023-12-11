@@ -4,7 +4,7 @@ import styles from './Input.module.scss'
 import ButtonLock from '../ButtonLock/ButtonLock'
 
 function Input({ name, valueInput }) {
-  const [value, setValue] = useState('wpisz, wygeneruj lub zostaw puste')
+  const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste')
   const [isEditing, setIsEditing] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 
@@ -28,7 +28,7 @@ useEffect(()=> {
       <ButtonLock />
       <input
         type="text"
-        id="uname"
+        id="uname "
         name="name"
         value={value}
         onChange={handleInputOnChange}
