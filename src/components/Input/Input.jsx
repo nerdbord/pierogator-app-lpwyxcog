@@ -28,7 +28,7 @@ useEffect(()=> {
       <ButtonLock />
       <input
         type="text"
-        id="uname"
+        id="uname "
         name="name"
         value={value}
         onChange={handleInputOnChange}

@@ -23,6 +23,7 @@ async function  generateDough (name) {
         }
       )
 let results =  await response.data.choices[0].message.content;
+
 console.log(results);
 return results;
 

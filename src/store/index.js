@@ -25,8 +25,7 @@ const inputSlice = createSlice({
                 generateDough(value).then(result => {
                    console.log(result); // Use the result directly
                    inputsAnswers[value] = result
-                   console.log('inputsAnswers')
-                   console.log(inputsAnswers)
+                   
                });
             //   state.items = [...state.items,inputsAnswers
            }) 
