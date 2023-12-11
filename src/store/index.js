@@ -30,6 +30,18 @@ const inputSlice = createSlice({
             //   state.items = [...state.items,inputsAnswers
            }) 
         },
+        regenarateItems(state, action){
+            state.items = [];
+            
+            valueInputs.forEach((value)=> {
+                 generateDough(value).then(result => {
+                    inputsAnswers[value] = result
+                });
+            })  
+           let regenarateItemsString = JSON.stringify(inputsAnswers)
+            state.items.push(regenarateItemsString)
+        }
+        ,
         getItems(state, action){
             state.items = [];
             
