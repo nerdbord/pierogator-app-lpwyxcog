@@ -5,7 +5,6 @@ import ButtonLock from '../ButtonLock/ButtonLock'
 
 function Input({ name, valueInput }) {
   const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste')
-  const [isEditing, setIsEditing] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 
   // useEffect(() => {
@@ -25,7 +24,7 @@ useEffect(()=> {
 
   return (
     <div className={styles.input_container}>
-      <ButtonLock />
+      <ButtonLock name={name} />
       <input
         type="text"
         id="uname "

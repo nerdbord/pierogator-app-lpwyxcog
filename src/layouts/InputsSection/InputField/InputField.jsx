@@ -6,7 +6,7 @@ export const InputField = ({ inputTitle, value}) => {
   return (
     <div className={styles.container}>
       <h3>{inputTitle}</h3>
-      <Input valueInput={value} />
+      <Input valueInput={value} name={inputTitle} />
     </div>
   )
 }
