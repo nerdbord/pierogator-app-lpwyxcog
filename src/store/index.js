@@ -54,17 +54,17 @@ const inputSlice = createSlice({
                    });
                }) 
             }else{
-
+//здесь первый раз работает код при нажатие на кнопку
                 valueInputs.forEach((value)=> {
+// у нас появляется асинхронный запрос к чату джпт                    
                     generateDough(value).then(result => {
                        console.log(result); // Use the result directly
+                  //заполняем объект свойствами  
                        inputsAnswers[value] = result
-                    //    console.log('inputsAnswers')
-                    //    console.log(inputsAnswers)
                    });
                })  
             }
-           
+ // а вот здесь оно не ждет пока закончится асинхронный код и сразу кидает данные в хранилище          
            let b = JSON.stringify(inputsAnswers)
             state.items.push(b)
         },

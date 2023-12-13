@@ -8,6 +8,7 @@ import { inputsActions } from '../../../store/index';
 function Header() {
   const dispatch = useDispatch();
   useEffect(()=>{
+ // это мой костыль что бы при первом клике подгружать данные тут получается как страница грузится оно уже обрщается в чат ДЖПТ   
     dispatch(inputsActions.fisrtLoadItems())
   },[])
   return (

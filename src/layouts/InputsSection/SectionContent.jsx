@@ -4,10 +4,11 @@ import styles from './SectionContent.module.scss'
 import { useSelector, useDispatch } from 'react-redux';
 function SectionContent() {
   let objInputs;
+  //здесь мы берем данные из хранилища и добавляем в наше input
   const inputsDescription = useSelector(state => state.inputs.items);
- if(inputsDescription.length > 0){
+ //проверка не пустое ли оно (и оно не пустое..)
+  if(inputsDescription.length > 0){
   objInputs =  JSON.parse(inputsDescription);
-  console.log(objInputs);
  }
  
   return (
