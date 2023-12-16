@@ -7,9 +7,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { inputsActions } from '../../../store/index';
 function Header() {
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(inputsActions.fisrtLoadItems())
-  },[])
+  // useEffect(()=>{
+  //   dispatch(inputsActions.fisrtLoadItems())
+  // },[])
   return (
     <>
       <header>
