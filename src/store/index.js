@@ -33,7 +33,6 @@ const inputSlice = createSlice({
             if (state.valueInputsShallowCopy.length > 0) {
                 state.valueInputsShallowCopy.forEach((value) => {
                     generateDough(value).then(result => {
-                        console.log(result); // Use the result directly
                         inputsAnswers[value] = result
                         console.log('shallow only get')
                     });
@@ -41,7 +40,9 @@ const inputSlice = createSlice({
             } else {
                 valueInputs.forEach((value) => {
                     generateDough(value).then(result => {
-                        inputsAnswers[value] = result
+                        if(!!inputsAnswers[value] !== true){
+                            inputsAnswers[value] = result
+                           }
                     });
                 })
             }
@@ -69,6 +70,11 @@ const inputSlice = createSlice({
         },
         setIsInputsUnLocked(state, action) {
             state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, action.payload.name]
+        },
+        getDescription(state,action){
+            console.log(action.payload)
+            inputsAnswers[action.payload.name] = action.payload.description;
+
         }
 
     },

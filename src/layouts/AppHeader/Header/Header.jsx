@@ -4,7 +4,7 @@ import SnowFlakesIcon from '@icons/SnowFlake.svg?react'
 import { NavComponent } from '../../InputsSection/Navigation/NavComponent'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { inputsActions } from '../../../store/index';
+
 function Header() {
   const dispatch = useDispatch();
   // useEffect(()=>{
