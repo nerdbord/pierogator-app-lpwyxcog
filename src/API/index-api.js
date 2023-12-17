@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+const apiKey = import.meta.env.VITE_REACT_APP_API_KEY
 async function generateDough(name) {
   try {
     const response = await axios.post(
@@ -17,8 +17,9 @@ async function generateDough(name) {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization:
-            'Bearer',
+
+          Authorization: `Bearer ${apiKey}`,
+
         },
       }
     )
