@@ -18,7 +18,7 @@ async function generateDough(name) {
         headers: {
           'Content-Type': 'application/json',
           Authorization:
-            'Bearer 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',
+            'Bearer',
         },
       }
     )

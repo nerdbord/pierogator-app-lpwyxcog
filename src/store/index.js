@@ -40,8 +40,9 @@ const inputSlice = createSlice({
             } else {
                 valueInputs.forEach((value) => {
                     generateDough(value).then(result => {
+                        if(!!inputsAnswers[value] !== true){
                             inputsAnswers[value] = result
-                            console.log(result)
+                           }
                     });
                 })
             }
@@ -71,9 +72,7 @@ const inputSlice = createSlice({
             state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, action.payload.name]
         },
         getDescription(state,action){
-            console.log(action.payload)
             inputsAnswers[action.payload.name] = action.payload.description;
-
         }
 
     },
