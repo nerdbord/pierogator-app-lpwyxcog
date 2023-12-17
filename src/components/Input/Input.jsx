@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { inputsActions } from '../../store/index';
 function Input({ name, valueInput }) {
   const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste')
-  const [lockButton, setlockButton] = useState(true)
+  const [lockButton, setlockButton] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 const dispatch = useDispatch();
   // useEffect(() => {

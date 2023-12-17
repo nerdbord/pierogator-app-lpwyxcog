@@ -15,9 +15,10 @@ export const ImageSection = () => {
 
   //тут не могу добраться до значений инпута
   const handleButtonClick = () => {
-    generateImage(`zgeneruj obrazek pieroga `)
+    console.log(objInputs);
+    generateImage(`zgeneruj obrazek pieroga. Dane: ciasto (${objInputs['Ciasto']}), nadzienie (${objInputs['Nadzienie']}), składniki (${objInputs['Składniki']}) `)
   }
-
+console.log('isLoading: ', isLoading)
   return (
     <div>
       <NavComponent />
