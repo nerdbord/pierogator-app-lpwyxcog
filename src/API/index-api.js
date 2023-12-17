@@ -2,8 +2,9 @@ import axios from 'axios'
 async function  generateDough (name) {
     try {
       const response = await axios.post(
-        'https://training.nerdbord.io/api/v1/openai/chat/completions',
+        'https://api.openai.com/v1/chat/completions',
         {
+          model: 'gpt-3.5-turbo',
           messages: [
             { role: 'system', content: 'You are a helpful assistant.' },
             {
@@ -17,8 +18,7 @@ async function  generateDough (name) {
           headers: {
             'Content-Type': 'application/json',
             Authorization:
-            
-              'ccdbc6d22ae9520cf81c0f812abb6ed95055717f247604cc855fa9acaae05ccb',
+              'Bearer ',
           },
         }
       )

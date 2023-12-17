@@ -12,7 +12,7 @@ export const fetchTo = createAsyncThunk(
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve(inputsAnswers);
-            }, 1500);
+            }, 1800);
         });
     }
 )
@@ -40,9 +40,8 @@ const inputSlice = createSlice({
             } else {
                 valueInputs.forEach((value) => {
                     generateDough(value).then(result => {
-                        if(!!inputsAnswers[value] !== true){
                             inputsAnswers[value] = result
-                           }
+                            console.log(result)
                     });
                 })
             }
