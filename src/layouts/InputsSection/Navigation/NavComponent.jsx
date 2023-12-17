@@ -9,9 +9,7 @@ export const NavComponent = ({ title }) => {
     dispatch(inputsActions.getItems())
     dispatch(fetchTo())
   }
-  const handleClickRegenarate = () =>{
-    dispatch(inputsActions.regenarateItems())
-    }
+
   return (
     <nav
       style={{
@@ -26,7 +24,6 @@ export const NavComponent = ({ title }) => {
         <h2 style={{ paddingLeft: '8px' }}>{title}</h2>
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-      <Button ><span onClick={handleClickRegenarate}>Regenerate</span></Button>
         <Button ><span onClick={handleClick}>Generuj</span></Button>
       </div>
     </nav>

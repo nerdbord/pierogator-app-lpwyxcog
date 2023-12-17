@@ -17,7 +17,9 @@ async function generateDough(name) {
       {
         headers: {
           'Content-Type': 'application/json',
+
           Authorization: `Bearer ${apiKey}`,
+
         },
       }
     )

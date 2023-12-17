@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { inputsActions } from '../../store/index';
 function Input({ name, valueInput }) {
   const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste')
+  const [lockButton, setlockButton] = useState(true)
   const { generatedText, generateDough } = useChatGPT()
 const dispatch = useDispatch();
   // useEffect(() => {
@@ -16,8 +17,8 @@ useEffect(()=> {
   setValue(valueInput)
 }, [valueInput] )
 
-  const handleInputOnChange = (e) => {
-    setValue(e.target.value)
+  const handleInputOnChange = (e, isLocked) => {
+      setValue(e.target.value)
   }
   const handleInputOnClick = (e) => {
     setValue('')
@@ -33,17 +34,21 @@ console.log(objDesc)
     console.log(e.target.value)
  dispatch(inputsActions.getDescription(objDesc)) 
   }
+ function handleButtonClick(isLocked){
+  setlockButton(isLocked)
+ }
+
 
   return (
     <div className={styles.input_container}>
-      <ButtonLock name={name} />
+      <ButtonLock name={name} onClick={handleButtonClick}  />
       <input
         type="text"
         id="uname "
         name={name}
         value={value}
-        onChange={handleInputOnChange}
-        onClick={handleInputOnClick}
+        onChange={!lockButton ? handleInputOnChange : undefined}
+        onClick={!lockButton ? handleInputOnClick : undefined}
         onBlur={handleBlur}
       />
     </div>
