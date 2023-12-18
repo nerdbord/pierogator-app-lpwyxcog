@@ -1,15 +1,14 @@
-import Button from '../../../components/Button/Button'
 import SnowFlakes from '../SnowFlakes/SnowFlakes'
-import SnowFlakesIcon from '@icons/SnowFlake.svg?react'
 import { NavComponent } from '../../InputsSection/Navigation/NavComponent'
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'
+import { inputsActions, fetchTo } from '../../../store/index'
 
 function Header() {
-  const dispatch = useDispatch();
-  // useEffect(()=>{
-  //   dispatch(inputsActions.fisrtLoadItems())
-  // },[])
+  const dispatch = useDispatch()
+  const handleClick = () => {
+    dispatch(inputsActions.getItems())
+    dispatch(fetchTo())
+  }
   return (
     <>
       <header>
@@ -17,7 +16,11 @@ function Header() {
         <h1>Pierogator świąteczny</h1>
       </header>
 
-      <NavComponent title="Skladniki" />
+      <NavComponent
+        title="Skladniki"
+        onClickFunction={handleClick}
+        buttonText="Generuj"
+      />
     </>
   )
 }
