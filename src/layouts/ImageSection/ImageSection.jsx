@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { NavComponent } from '../InputsSection/Navigation/NavComponent'
 import useImageGeneration from '../../hooks/useImgGenerate'
 import useNameGeneration from '../../hooks/useNameGenerate'
@@ -49,9 +50,9 @@ dispatch(inputsActions.addRecipes(recipe))
           alt="Generated Image"
           style={{ maxWidth: '343px', maxHeight: '233px' }}
         />
-        <InputDefault inputTitle="Nazwa pieroga" valueInput={generatedNames} />
+        <InputDefault onChange={true} inputTitle="Nazwa pieroga" valueInput={generatedNames} />
     <div style={{padding: '24px 0'}}>
-    <Button ><span onClick={handleSaveData}>Zapisz i przejdź do tworzenia przepisu</span></Button>
+    <Button > <NavLink to="/recipe"><span onClick={handleSaveData}>Zapisz i przejdź do tworzenia przepisu</span></NavLink></Button>
     </div>
      
         </>

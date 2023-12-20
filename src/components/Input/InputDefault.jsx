@@ -1,6 +1,6 @@
 import styles from './Input.module.scss'
 import { useState } from 'react'
-function InputDefault ({inputTitle, valueInput}){
+function InputDefault ({inputTitle, valueInput, onChange}){
   const [value, setValue] = useState(valueInput)
   console.log(valueInput)
   console.log(value)
@@ -28,8 +28,8 @@ function InputDefault ({inputTitle, valueInput}){
         type="text"
         id="uname"
         value={value}
-        onChange={handleInputOnChange}
-        onClick={handleInputOnClick}
+        onChange={onChange ? handleInputOnChange : ''}
+        onClick={onChange ? handleInputOnClick : ''}
        />
     </div>
     </div>
