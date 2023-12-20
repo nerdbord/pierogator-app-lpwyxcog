@@ -12,19 +12,21 @@ export const ImageSection = () => {
   if (inputsDescription.length > 0) {
     objInputs = JSON.parse(inputsDescription)
   }
-
-  //тут не могу добраться до значений инпута
   const handleButtonClick = () => {
-    console.log(objInputs);
-    generateImage(`zgeneruj obrazek pieroga. Dane: ciasto (${objInputs['Ciasto']}), nadzienie (${objInputs['Nadzienie']}), składniki (${objInputs['Składniki']}) `)
+    console.log(objInputs)
+    generateImage(
+      `zgeneruj obrazek pieroga. Dane: ciasto (${objInputs['Ciasto']}), nadzienie (${objInputs['Nadzienie']}), składniki (${objInputs['Składniki']}) `
+    )
   }
-console.log('isLoading: ', isLoading)
+  console.log('isLoading: ', isLoading)
   return (
     <div>
-      <NavComponent />
-      <button onClick={handleButtonClick} disabled={isLoading}>
-        {isLoading ? 'Generating...' : 'Generate Image'}
-      </button>
+      <NavComponent
+        onClickFunction={handleButtonClick}
+        buttonText="Generuj"
+        title="Pieróg"
+        isLoading={isLoading}
+      />
       {generatedImages && (
         <img
           src={generatedImages}
