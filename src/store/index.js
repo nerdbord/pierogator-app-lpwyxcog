@@ -22,10 +22,12 @@ const inputSlice = createSlice({
     name: 'input',
     initialState: {
         items: [],
+        recipes: [],
         buttonLock: true,
         valueInputsShallowCopy: [],
         status: null,
-        error: null
+        error: null,
+        isLoading: null
     },
     reducers: {
         getItems(state, action) {
@@ -37,11 +39,14 @@ const inputSlice = createSlice({
                         console.log('shallow only get')
                     });
                 })
+               
             } else {
                 valueInputs.forEach((value) => {
                     generateDough(value).then(result => {
                         if(!!inputsAnswers[value] !== true){
+                            console.log('i am not true')
                             inputsAnswers[value] = result
+                            console.log(result)
                            }
                     });
                 })
@@ -72,7 +77,15 @@ const inputSlice = createSlice({
             state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, action.payload.name]
         },
         getDescription(state,action){
+            console.log(action.payload)
             inputsAnswers[action.payload.name] = action.payload.description;
+
+        },
+        addRecipes(state,action){
+            console.log('action.payload')
+console.log(action.payload);
+state.recipes = [...state.recipes, action.payload]
+console.log(state.recipes);
         }
 
     },
@@ -80,12 +93,14 @@ const inputSlice = createSlice({
         builder
             .addCase(fetchTo.pending, (state, action) => {
                 state.status = "loading";
+                state.isLoading = true;
             })
             .addCase(fetchTo.fulfilled, (state, action) => {
                 state.items = []
                 state.status = "fulfilled";
                 let b = JSON.stringify(action.payload);
                 state.items.push(b);
+                state.isLoading = false;
             })
 
 
