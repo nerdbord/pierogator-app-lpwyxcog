@@ -1,15 +1,30 @@
 import './App.css'
-import Header from './layouts/AppHeader/Header/Header'
-import SectionContent from './layouts/InputsSection/SectionContent'
 import { AppLayout } from './layouts/AppLayout/Applayout'
-import { ImageSection } from './layouts/ImageSection/ImageSection'
-
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Root from "./pages/Root";
+import Home from './pages/Home';
+import Recipe from './pages/Recipe';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/recipe",
+        element: <Recipe />
+      }
+    ]
+  }
+])
 function App() {
   return (
     <AppLayout>
-      <Header />
-      <SectionContent />
-      <ImageSection />
+     <RouterProvider router={router} />
+
     </AppLayout>
   )
 }

@@ -1,25 +1,40 @@
 import SnowFlakes from '../SnowFlakes/SnowFlakes'
 import { NavComponent } from '../../InputsSection/Navigation/NavComponent'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { inputsActions, fetchTo } from '../../../store/index'
-
+import { useLocation, useNavigate } from 'react-router-dom';
 function Header() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.inputs.isLoading);
+  const navigate = useNavigate()
   const handleClick = () => {
-    dispatch(inputsActions.getItems())
-    dispatch(fetchTo())
+    if(location.pathname === '/recipe'){
+      navigate('/');
+    }else{
+      dispatch(inputsActions.getItems())
+      dispatch(fetchTo());
+    }
+   
   }
+  let location = useLocation();
+let titleNav = 'Skladniki';
+let buttonText = "Generuj";
+if(location.pathname === '/recipe'){
+titleNav = 'Pieróg';
+buttonText = 'Zmień'
+}
   return (
     <>
       <header>
         <SnowFlakes />
-        <h1>Pierogator świąteczny</h1>
+        <h1>Pierogator świąteczny </h1>
       </header>
 
       <NavComponent
-        title="Skladniki"
+        title={titleNav}
         onClickFunction={handleClick}
-        buttonText="Generuj"
+        buttonText={buttonText}
+        isLoading={isLoading}
       />
     </>
   )
