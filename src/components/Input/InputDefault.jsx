@@ -1,15 +1,24 @@
 import styles from './Input.module.scss'
 import { useState } from 'react'
-function InputDefault ({inputTitle, valueInput, onChange}){
+function InputDefault ({inputTitle, valueInput, onChange, blurName, id }){
   const [value, setValue] = useState(valueInput)
-  console.log(valueInput)
-  console.log(value)
     const handleInputOnChange = (e) => {
         setValue(e.target.value)
     }
     const handleInputOnClick = (e) => {
       setValue('')
     }
+    const handleBlur = (e) => {
+      const idRec = id;
+      console.log(idRec)
+      const objRec = {
+        id: idRec,
+        name: e.target.value
+      }
+      blurName(objRec)
+      console.log('Компонент потерял фокус');
+      console.log(e.target.value)
+    };
     const container = {
         display: 'flex',
         flexDirection: 'column',
@@ -30,6 +39,7 @@ function InputDefault ({inputTitle, valueInput, onChange}){
         value={value}
         onChange={onChange ? handleInputOnChange : ''}
         onClick={onChange ? handleInputOnClick : ''}
+        onBlur={handleBlur}
        />
     </div>
     </div>

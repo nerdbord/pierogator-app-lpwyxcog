@@ -10,6 +10,9 @@ function Header() {
   const handleClick = () => {
     if(location.pathname === '/recipe'){
       navigate('/');
+      dispatch(inputsActions.showImageSection());
+//при клике на zmień тут надо помнить о том что бы сделать 
+//возможность редактирования массива а не добавление нового
     }else{
       dispatch(inputsActions.getItems())
       dispatch(fetchTo());

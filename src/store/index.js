@@ -1,5 +1,6 @@
 import { configureStore, createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import generateDough from '../API/index-api';
+import { recipesSlice } from './recipesSlice';
 const inputsAnswers = {
     'Ciasto': '',
     'Nadzienie': '',
@@ -22,8 +23,8 @@ const inputSlice = createSlice({
     name: 'input',
     initialState: {
         items: [],
-        recipes: [],
         buttonLock: true,
+        sectionImage: false,
         valueInputsShallowCopy: [],
         status: null,
         error: null,
@@ -36,7 +37,6 @@ const inputSlice = createSlice({
                 state.valueInputsShallowCopy.forEach((value) => {
                     generateDough(value).then(result => {
                         inputsAnswers[value] = result
-                        console.log('shallow only get')
                     });
                 })
                
@@ -44,31 +44,31 @@ const inputSlice = createSlice({
                 valueInputs.forEach((value) => {
                     generateDough(value).then(result => {
                         if(!!inputsAnswers[value] !== true){
-                            console.log('i am not true')
                             inputsAnswers[value] = result
-                            console.log(result)
                            }
                     });
                 })
             }
         },
         setIsInputsLocked(state, action) {
+            console.log('locked')
+            state.items = [];
+             //first try when all block 24.12 17:58
+             let b = JSON.stringify(inputsAnswers);
+             state.items.push(b);
+//end
             if (state.valueInputsShallowCopy.length === 0) {
-
                 let newArr = valueInputs.filter((e) => {
-                    console.log(e !== action.payload.name)
                     return e !== action.payload.name
                 });
 
                 state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, ...newArr];
 
             } else if (state.valueInputsShallowCopy.includes(action.payload.name)) {
-
                 let nameIndex = state.valueInputsShallowCopy.indexOf(action.payload.name);
                 state.valueInputsShallowCopy.splice(nameIndex, 1);
 
             } else {
-
                 state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, action.payload.name]
             }
 
@@ -77,15 +77,16 @@ const inputSlice = createSlice({
             state.valueInputsShallowCopy = [...state.valueInputsShallowCopy, action.payload.name]
         },
         getDescription(state,action){
-            console.log(action.payload)
             inputsAnswers[action.payload.name] = action.payload.description;
-
         },
-        addRecipes(state,action){
-            console.log('action.payload')
-console.log(action.payload);
-state.recipes = [...state.recipes, action.payload]
-console.log(state.recipes);
+        allLockedInputs(state,action){
+            state.items.push(JSON.stringify(inputsAnswers))
+        },
+        showImageSection(state,action){
+            state.sectionImage = true;
+        },
+        hideImageSection(state,action){
+            state.sectionImage = false;
         }
 
     },
@@ -110,7 +111,9 @@ console.log(state.recipes);
 const store = configureStore({
     reducer: {
         inputs: inputSlice.reducer,
+        recipe: recipesSlice.reducer
     }
 });
 export const inputsActions = inputSlice.actions;
+export const recipeActions = recipesSlice.actions
 export default store;

@@ -2,7 +2,14 @@ import { ImageSection } from "../layouts/ImageSection/ImageSection";
 import { useDispatch, useSelector } from 'react-redux'
 import InputDefault from "../components/Input/InputDefault";
 function Recipe(){
-const objRecipe = useSelector((state) => state.inputs.recipes[0]);
+const objRecipe = useSelector((state) => {
+    const lengthArrayRecipes = state.recipe.recipes.length;
+    console.log(state.recipe.recipes);
+    if(lengthArrayRecipes > 0){
+     return state.recipe.recipes[lengthArrayRecipes-1]
+    }
+    return state.recipe.recipes[0]
+});
 console.log(objRecipe)
     return(
         <>
