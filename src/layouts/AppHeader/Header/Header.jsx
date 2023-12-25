@@ -26,6 +26,10 @@ if(location.pathname === '/recipe'){
 titleNav = 'Pieróg';
 buttonText = 'Zmień'
 }
+if(location.pathname === '/list'){
+  titleNav = 'Moje pierogi';
+  buttonText = 'Nowy pieróg'
+}
   return (
     <>
       <header>
