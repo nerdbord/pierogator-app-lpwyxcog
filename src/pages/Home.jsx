@@ -1,11 +1,13 @@
-import SectionContent from "../layouts/InputsSection/SectionContent";
-import { ImageSection } from "../layouts/ImageSection/ImageSection";
-function Home(){
-    return(
-        <>
-    <SectionContent />
+import SectionContent from '../layouts/InputsSection/SectionContent'
+import { ImageSection } from '../layouts/ImageSection/ImageSection'
+import { Accordion } from '../components/Accordion/Accordion'
+function Home() {
+  return (
+    <>
+      <SectionContent />
       <ImageSection />
-        </>
-    )
+      <Accordion />
+    </>
+  )
 }
-export default Home;
+export default Home
