@@ -31,9 +31,9 @@ const fetchApi = async (prompt) => {
   return content
 }
 
-export const generateRecipe = async () => {
-  const prompt = `utworz INGREDIENTS.JSON - stworz różnorodne składniki do pierogów, składniki dowolne, uzupełnij cały JSON. Podaj przypadkowe dane, избегай повторения тех, которые приведены в примере ниже. Запиши информацию в формате JSON без добавления лишних слов:
-
+export const generateRecipe = async (ciasto, farsh, sklad) => {
+  const prompt = `utworz INGREDIENTS.JSON - stworz różnorodne składniki do pierogów,używając składniki jako podstawę z czego powinien skład się JSON, a same: dough : ${ciasto},filling: ${farsh}, quantity zrób jak uważasz lepiej.
+  Запиши информацию в формате JSON без добавления лишних слов:
   {
     "ingredients": {
       "dough": [

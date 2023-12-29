@@ -1,35 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Arrow from '@icons/Arrow.svg?react'
 import styles from './AccordionItem.module.scss'
 
-const AccordionItem = ({ title, content }) => {
-  const [isActive, setIsActive] = useState(false)
+const AccordionItem = ({ isAccordionOpen, title, sections }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  useEffect(() => {
+    if (isAccordionOpen !== undefined) {
+      setIsOpen(isAccordionOpen)
+    }
+  }, [isAccordionOpen])
 
-  const toggleAccordion = () => {
-    setIsActive(!isActive)
+  const handleSwitch = () => {
+    setIsOpen(!isOpen)
   }
-  console.log(content)
   return (
-    // <div className={styles.container}>
-    //   <div className={styles.header} onClick={toggleAccordion}>
-    //     <span>{title}:</span>
-    //     <span className={isActive ? styles.arrowDown : ''}>
-    //       <Arrow />
-    //     </span>
-    //   </div>
-    //   {isActive &&
-    //     sections.map((section, index) => (
-    //       <div key={index} className={styles.section}>
-    //         {section}
-    //       </div>
-    //     ))}
-    // </div>
-    <li className="accordion-item">
-      <div className="accordion-header" onClick={toggleAccordion}>
-        {title}
+    <div className={styles.container}>
+      <div className={styles.header} onClick={handleSwitch}>
+        <span>{title}:</span>
+        <span className={isOpen ? styles.arrowDown : ''}>
+          <Arrow />
+        </span>
       </div>
-      {isActive && <div className="accordion-content">{content}</div>}
-    </li>
+      {isOpen &&
+        sections.map((section, index) => (
+          <div key={index} className={styles.section}>
+            {section.name}:{section.quantity}
+          </div>
+        ))}
+    </div>
   )
 }
 export default AccordionItem
