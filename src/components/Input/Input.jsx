@@ -5,16 +5,14 @@ import ButtonLock from '../ButtonLock/ButtonLock'
 import { useDispatch } from 'react-redux'
 import { inputsActions } from '../../store/index';
 function Input({ name, valueInput }) {
-  const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste')
+  const [value, setValue] = useState('wpisz, wygeneruj  lub zostaw puste');
   const [lockButton, setlockButton] = useState(false)
   const { generatedText, generateDough } = useChatGPT()
 const dispatch = useDispatch();
-  // useEffect(() => {
-  //   generateDough({ name })
-  //   console.log(generatedText)
-  // }, [])
 useEffect(()=> {
-  setValue(valueInput)
+  if(valueInput){
+    setValue(valueInput)
+  }
 }, [valueInput] )
 
   const handleInputOnChange = (e, isLocked) => {
@@ -26,7 +24,7 @@ useEffect(()=> {
   const handleBlur = (e) => {
     const objInput = {name};
     const objDesc = {
-      'name' : [objInput.name],
+      'name' : objInput.name,
       'description' : e.target.value
     }
     console.log('lost focus')

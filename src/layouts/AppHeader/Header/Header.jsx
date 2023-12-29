@@ -10,6 +10,9 @@ function Header() {
   const handleClick = () => {
     if(location.pathname === '/recipe'){
       navigate('/');
+      dispatch(inputsActions.showImageSection());
+//при клике на zmień тут надо помнить о том что бы сделать 
+//возможность редактирования массива а не добавление нового
     }else{
       dispatch(inputsActions.getItems())
       dispatch(fetchTo());
@@ -22,6 +25,10 @@ let buttonText = "Generuj";
 if(location.pathname === '/recipe'){
 titleNav = 'Pieróg';
 buttonText = 'Zmień'
+}
+if(location.pathname === '/list'){
+  titleNav = 'Moje pierogi';
+  buttonText = 'Nowy pieróg'
 }
   return (
     <>
