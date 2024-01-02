@@ -1,0 +1,12 @@
+@use '/src/scss/abstracts/' as *;
+.itemContainer{
+    max-width: 162px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #002902;
+}
+.imageContainer{
+    object-fit: cover;
+    border-radius: 4px
+}

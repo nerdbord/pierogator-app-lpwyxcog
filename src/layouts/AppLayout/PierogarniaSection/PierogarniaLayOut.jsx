@@ -1,6 +1,8 @@
+import ItemPierog from "../../../components/ItemPierog/ItemPierog";
 import NavigateNameLogo from "../../../components/Nav/NavigateNameLogo";
 import styles from "./PierogarniaLayOut.module.scss"
-function Pierogarnia(){
+function Pierogarnia({items}){
+
 return(
     <>
     <div className={styles.container}> 
@@ -9,10 +11,10 @@ return(
     <section className={styles.container}> 
     <NavigateNameLogo title="Pierogarnia" />
     <div className={styles.listContainer}>
-<div className={styles.itemContainer}>
-<img width="162" height="110"  className={styles.imageContainer} loading="eager" fetchpriority="high" ng-img="true" src="https://xurxupibc5lblwyy.public.blob.vercel-storage.com/dumpling_Pier%C3%B3g%20Micha%C5%82_1701996150639-REIzLQzO2Fa55kl5jPh2IT3qVp9Yjr" />
-<span  className={styles.containerName}>Pieróg Michał</span>
-</div>
+    {items && items.map(element => {
+        console.log(element[1])
+        return <ItemPierog name={element[1].name} img={element[1].image} />
+    })}
     </div>
     </section>
         

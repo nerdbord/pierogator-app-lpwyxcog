@@ -3,7 +3,9 @@ import AccordionItem from './AccordionItem/AccordionItem'
 import { generateRecipe } from '../../hooks/useRecipeGenerate'
 import { useSelector } from 'react-redux'
 import { NavComponent } from '../../layouts/InputsSection/Navigation/NavComponent'
-
+import Button from '../ButtonCta/ButtonCta'
+import { NavLink } from 'react-router-dom'
+import { getDatabase, ref, child, push, update } from "firebase/database";
 export const Accordion = () => {
   const objRecipe = useSelector((state) => state.recipe.recipes[0])
   const [recipeData, setRecipeData] = useState(null)
@@ -22,6 +24,17 @@ export const Accordion = () => {
     } finally {
       setIsLoading(false)
     }
+  }
+  function handleAddDB(){
+    const db = getDatabase();
+ const postData = {
+ image: objRecipe.image,
+ name: objRecipe.name
+};
+const newPostKey = push(child(ref(db), 'pierogarnia')).key;
+const updates = {};
+updates['/pierogarnia/' + newPostKey] = postData;
+update(ref(db), updates);
   }
 
   return (
@@ -56,6 +69,8 @@ export const Accordion = () => {
             title="farsz"
             isAccordionOpen={true}
           />
+
+       <NavLink to='/list'>  <Button> <span onClick={handleAddDB}>Udostępnij pieroga</span> </Button> </NavLink> 
           {/* ))} */}
         </>
       ) : (

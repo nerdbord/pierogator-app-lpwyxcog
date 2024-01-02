@@ -4,7 +4,7 @@ function NavigateNameLogo({title}){
         <>
          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
         <PierogIcon />
-        <h2 style={{ paddingLeft: '8px' }}>{title}</h2>
+        <h2 style={{ paddingLeft: '8px', color: '#002902' }}>{title}</h2>
       </div>
         </>
     )
